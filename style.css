@@ -1,0 +1,118 @@
+.container-fluid {
+    background: #f1f3f4;
+    height: 100vh;
+    width: 100vw;
+}
+
+#tooltip {
+    z-index: 2;
+    position: relative;
+}
+
+#tooltip:hover {
+    background: #f1f1f1;
+    border: #f1f1f1 1px solid;
+    color: blue;
+}
+
+#tooltip-hide {
+    display: none;
+    height: fit-content;
+    padding: 15px;
+}
+
+#tooltip:hover+#tooltip-hide {
+    display: block;
+    position: absolute;
+    border: 1px #c2c2c2 solid;
+    background: #f1f1f1;
+}
+
+figure {
+    display: block;
+    width: auto;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+li {
+    list-style: square;
+}
+
+.audio-player {
+    z-index: 1;
+    background-color: #f1f3f4;
+    height: 15vh;
+    width: 45vw;
+    margin: auto;
+    border-radius: 10px;
+    align-items: center;
+    background-color: #f1f3f4;
+    box-shadow:
+        12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+        -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+}
+
+audio {
+    width: 40vw;
+}
+
+#btns-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#btn {
+    width: 5vw;
+    align-items: center;
+    background-color: #f1f3f4;
+    box-shadow:
+        6px 6px 16px 0 rgba(0, 0, 0, 0.25),
+        -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    border: none;
+}
+
+#btn:hover {
+    background: linear-gradient(-45deg, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.25));
+}
+
+#btn:active {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.25));
+}
+
+#wave-up {
+    position: absolute;
+    z-index: 0;
+}
+
+#wave-down {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+}
+
+#dialog{
+    text-align: center;
+    position: absolute;
+    z-index: 100;
+    height: fit-content;
+    width: 35vw;
+    left: 34%;
+    top: 15%;
+    padding: 5px;
+    background-color: #f1f3f4;
+    box-shadow:
+        6px 6px 16px 0 rgba(0, 0, 0, 0.25),
+        -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+}
+
+#close{
+    position: relative;
+    float: right;
+    right: 5%;
+    top: 5%;
+}

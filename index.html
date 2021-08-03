@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <!-- Style -->
+    <link rel="stylesheet" href="/style.css">
+    <!-- JS -->
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- SVG Up -->
+    <img src="/assets/images/wave-up.svg" id="wave-up" alt="" srcset="">
+    <div class="container-fluid">
+        <!-- ToolTip -->
+        <div class="" id="tooltip-container">
+            <div type="button" class="rounded-circle btn btn-primary text-center m-2 mt-4" id="tooltip"
+                data-toggle="tooltip" data-html="true" title="tooltip">?</div>
+            <!-- Inner tip -->
+            <div class="" id="tooltip-hide">I am shown when someone hovers over the div above.
+                <ul>
+                    <li><code>crtl+space</code>: next word</li>
+                    <li><code>crtl+space</code>: next word</li>
+                    <li><code>crtl+space</code>: next word</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Reconrding container -->
+        <figure class="m-5 p-5">
+            <figcaption>
+                <!-- Status -->
+                <h3 class="display-6" id="recording-status">Recording avalible:</h3>
+            </figcaption>
+            <!-- Media player -->
+            <div class="audio-player">
+                <audio controls id="player" class="mt-2">
+                    <!-- I need to recevie the audio assets and insert here src="./assets/<audio>"  -->
+                    <source src="/assets/audio" type="audio/ogg">
+                    <source src="/assets/audio" type="audio/mpeg">
+                    Your browser does not support the audio tag.
+                </audio>
+                <!-- Media player btns -->
+                <div id="btns-container">
+                    <button id="btn" onclick="document.getElementById('player').play()">Play</button>
+                    <button id="btn" onclick="document.getElementById('player').pause()">Pause</button>
+                    <button id="btn" onclick="document.getElementById('player').volume += 0.1">Vol +</button>
+                    <button id="btn" onclick="document.getElementById('player').volume -= 0.1">Vol -</button>
+                    <button id="btn" onclick="document.getElementById('player').muted = true">Muted</button>
+                    <button id="btn" onclick="document.getElementById('player').muted = false"><del>Muted</del></button>
+                </div>
+            </div>
+        </figure>
+    </div>
+    <!-- SVG down -->
+    <img src="./assets/images/wave-down.svg" id="wave-down" alt="" srcset="">
+    <script src="/main.js"></script>
+
+</body>
+
+</html>
