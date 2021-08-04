@@ -14,6 +14,10 @@
     </script>
     <!-- Style -->
     <link rel="stylesheet" href="style.css">
+    <!-- Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap" rel="stylesheet">
     <!-- JS -->
     <title>Document</title>
 </head>
@@ -51,21 +55,54 @@
                 </audio>
                 <!-- Media player btns -->
                 <div id="btns-container">
-                    <button id="btn" onclick="document.getElementById('player').play()">Play</button>
-                    <button id="btn" onclick="document.getElementById('player').pause()">Pause</button>
-                    <button id="btn" onclick="document.getElementById('player').volume += 0.1">Vol +</button>
-                    <button id="btn" onclick="document.getElementById('player').volume -= 0.1">Vol -</button>
-                    <button id="btn" onclick="document.getElementById('player').muted = true">Muted</button>
-                    <button id="btn" onclick="document.getElementById('player').muted = false"><del>Muted</del></button>
+                    <button class="button" onclick="playPause(this)" id="playPause"><img
+                            src="https://img.icons8.com/material-outlined/20/000000/play--v1.png" /></button>
+                    <button class="button" onclick="document.getElementById('player').volume += 0.1">+</button>
+                    <button class="button" onclick="document.getElementById('player').volume -= 0.1">-</button>
+                    <button class="button" onclick="mute(this)" id="mute"><img
+                            src="https://img.icons8.com/ios/20/000000/low-volume.png" /></button>
                 </div>
             </div>
         </figure>
+
+        <!-- Transcription block -->
+        <figure>
+            <figcaption>
+                <div class="form-group">
+                    <form autocomplete="off">
+                        <button id="submit" class="send btn btn-primary" type="button">Submit</button>
+                        <ul class="d-flex justify-start flex-wrap" id="ul-parent">
+                            <slot></slot>
+                            <!-- <iframe src="/components/TrieTree.html" width="750px" height="750px" frameborder="0"></iframe> -->
+                            <!-- <li style="list-style: none;" >
+                                <div class="input-container d-flex" style="width: fit-content;" >
+                                    <div class="btn btn-primary" onclick="addInputBoxBefore(this.parentNode)">+</div>
+                                    <div class="btn btn-primary" onclick="deleteInputBox(this.parentNode)">-</div>
+                                    <input type="text" class="form-control"  placeholder="text">
+                                    <div class="btn btn-primary" onclick="addInputBoxAfter(this.parentNode)">+</div>
+                                </div>
+                            </li> -->
+                        </ul>
+                    </form>
+                </div>
+            </figcaption>
+        </figure>
     </div>
+
     <!-- SVG down -->
     <img src="assets/images/wave-down.svg" id="wave-down" alt="" srcset="">
-    <!-- <script src="/main.js"></script> -->
-    <script src="bundle.js"></script>
+    <script defer src="/main.js"></script>
+    <!-- <script src="bundle.js"></script> -->
 
 </body>
 
 </html>
+<!-- <li style="list-style: none;">
+    <div class="d-flex">
+        <img style=""
+            src="https://img.icons8.com/fluency-systems-regular/24/000000/xbox-x.png" />
+        <img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png" />
+        <input type="text" placeholder="text"></input>
+        <img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png" />
+    </div>
+</li> -->

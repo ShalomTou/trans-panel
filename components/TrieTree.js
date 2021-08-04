@@ -1,118 +1,3 @@
-const audioPlayer = document.getElementById('player')
-const body = document.querySelector(`body`)
-const container = document.querySelector(`.container-fluid`)
-const parent = document.querySelector(`#ul-parent`)
-const items = parent.querySelectorAll(`li`)
-let i = 0
-
-function setCookie(c_name, value, exdays) {
-  var exdate = new Date();
-  exdate.setDate(exdate.getDate() + exdays);
-  var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
-  document.cookie = c_name + "=" + c_value;
-}
-
-function getCookie(c_name) {
-  var c_value = document.cookie;
-  var c_start = c_value.indexOf(" " + c_name + "=");
-  if (c_start == -1) {
-    c_start = c_value.indexOf(c_name + "=");
-  }
-  if (c_start == -1) {
-    c_value = null;
-  } else {
-    c_start = c_value.indexOf("=", c_start) + 1;
-    var c_end = c_value.indexOf(";", c_start);
-    if (c_end == -1) {
-      c_end = c_value.length;
-    }
-    c_value = unescape(c_value.substring(c_start, c_end));
-  }
-  return c_value;
-}
-
-checkSession();
-
-function checkSession() {
-  var c = getCookie("visited");
-  if (c === "yes") {
-    //  alert("Welcome back!");
-  } else {
-    setCookie("visited", "yes", 365);
-    firstTimeDialog()
-  }
-}
-
-
-function firstTimeDialog() {
-  container.style = "opacity:.2;"
-  let dialog = document.createElement(`div`)
-  dialog.innerHTML = "<button type='button' id='close' onclick='closeDialog()' class='btn btn-danger float-left'>x</button></button></button><h1>First time?</h1><p class='fs-3'>Hi, welcome to the transcriptioners platform :)<br>If you want to understend better how does it work you can click on the question mark at the left side of the website.<br>Totally lost? contact the support at <code>support</code></p>"
-  dialog.id = "dialog"
-  body.insertBefore(dialog, body.firstChild)
-}
-
-function closeDialog() {
-  document.querySelector('#dialog').style.display = 'none'
-  container.style = "opacity:1;"
-}
-
-function mute($) {
-  audioPlayer.muted = !audioPlayer.muted
-  if (audioPlayer.muted) {
-    $.firstChild.src = "https://img.icons8.com/ios/20/000000/mute--v1.png"
-  } else {
-    $.firstChild.src = `https://img.icons8.com/ios/20/000000/low-volume.png`
-  }
-}
-
-function playPause($) {
-  if (audioPlayer.paused) {
-    audioPlayer.play()
-    $.firstChild.src = "https://img.icons8.com/material-outlined/20/000000/pause.png"
-  } else {
-    audioPlayer.pause()
-    $.firstChild.src = "https://img.icons8.com/material-outlined/20/000000/play--v1.png"
-  }
-}
-
-function addInputBoxBefore($) {
-  let newListItem = document.createElement('li');
-  newListItem.innerHTML = `<div class="input-container d-flex" style="width: fit-content;">
-                                <div class="btn btn-primary" onclick="addInputBoxBefore(this.parentNode)">+</div>
-                                <div class="btn btn-primary"  onclick="deleteInputBox(this.parentNode)">-</div>
-                                <input type="text" class="form-control" placeholder="text + ${i++}">
-                                <div class="btn btn-primary" onclick="addInputBoxAfter(this)">+</div>
-                            </div>`
-  parent.insertBefore(newListItem, $.parentNode)
-}
-
-function addInputBoxAfter($) {
-
-  let newListItem = document.createElement('li');
-  newListItem.innerHTML = `<div class="input-container d-flex" style="width: fit-content;">
-                                <div class="btn btn-primary" onclick="addInputBoxBefore(this.parentNode)">+</div>
-                                <div class="btn btn-primary"  onclick="deleteInputBox(this.parentNode)">-</div>
-                                <input type="text" class="form-control" placeholder="text + ${i++}" >
-                                <div class="btn btn-primary" onclick="addInputBoxAfter(this.parentNode)">+</div>
-                            </div>`
-  parent.insertBefore(newListItem, $.parentNode.nextSibling);
-}
-
-function deleteInputBox($) {
-  console.log(`delete`, $)
-  $.parentElement.remove()
-}
-
-
-const template = document.querySelector(`slot`)
-template.innerHTML = `<div id="words-container">
-                        <div contenteditable="true" id="input" ></div>
-                        <div id="time"></div>
-                        <div id='fake-div' class='div'></div>
-                    </div>`
-console.log(template)
-
 const $input = document.getElementById('input');
 const $time = document.getElementById('time');
 const $fakeDiv = document.getElementById('fake-div');
@@ -126,6 +11,7 @@ const css = getComputedStyle($input);
 $span.style.cssText = `
     width: ${r.width}px;
     height: ${r.height}px;
+    left: ${r.left}px;
     top: ${r.top}px;
     z-index: -10;
     opacity: 0.4;
@@ -136,7 +22,7 @@ $span.style.cssText = `
     padding-top: ${parseInt(css.paddingTop) + 1}px;
 `;
 
-document.querySelector(`#words-container`).parentNode.appendChild($span);
+document.body.appendChild($span);
 
 class Trie {
   constructor() {
@@ -368,3 +254,5 @@ $input.addEventListener('keydown', e => {
     $span.textContent = '';
   }
 });
+
+
